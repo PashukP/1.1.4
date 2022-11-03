@@ -6,13 +6,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
     public UserDaoHibernateImpl() {
 
     }
-
 
     @Override
     public void createUsersTable() {
@@ -32,7 +32,6 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
         }
     }
 
@@ -49,24 +48,22 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
         }
     }
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
         Transaction transaction = null;
-        User user = new User(name, lastName, age);
         try (Session session = Util.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.save(user);
-            transaction.commit();
-            System.out.println("User – " + name + " добавлен в базу данных");
+            session.getTransaction().begin();
+            User user_new = new User(name, lastName, age);
+            session.save(user_new);
+            session.getTransaction().commit();
+            System.out.println("User saved");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
         }
     }
 
@@ -76,15 +73,19 @@ public class UserDaoHibernateImpl implements UserDao {
             User user = session.load(User.class, id);
             session.delete(user);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Override
     public List<User> getAllUsers() {
+        List<User> result = new ArrayList<>();
         try (Session session = Util.getSessionFactory().openSession()) {
-            return session.createQuery("from User", User.class).list();
+            session.getTransaction().begin();
+            result = session.createQuery("from User", User.class).list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
         }
+        return result;
     }
 
     @Override
@@ -98,7 +99,6 @@ public class UserDaoHibernateImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
         }
     }
 }

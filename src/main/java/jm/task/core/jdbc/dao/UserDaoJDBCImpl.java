@@ -11,7 +11,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public UserDaoJDBCImpl() {
     }
 
-    public void createUsersTable() throws SQLException {
+    public void createUsersTable() {
 //        Connection connection = Util.getConnection();
 //        String sql = "CREATE TABLE IF NOT EXISTS `mydbtest`.`user` (\n" +
 //                "  `id` BIGINT NOT NULL AUTO_INCREMENT,\n" +
@@ -31,7 +31,7 @@ public class UserDaoJDBCImpl implements UserDao {
 //        }
     }
 
-    public void dropUsersTable() throws SQLException {
+    public void dropUsersTable() {
 //        Connection connection = Util.getConnection();
 //        String sql = "drop table IF EXISTS user";
 //
@@ -46,7 +46,7 @@ public class UserDaoJDBCImpl implements UserDao {
 //        }
     }
 
-    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age) {
 //        Connection connection = Util.getConnection();
 //        String sql = "INSERT INTO user (name, lastName, age) VALUES (?, ?, ?)";
 //        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -63,7 +63,7 @@ public class UserDaoJDBCImpl implements UserDao {
 //        }
     }
 
-    public void removeUserById(long id) throws SQLException {
+    public void removeUserById(long id) {
 //        Connection connection = Util.getConnection();
 //        String sql = "DELETE FROM user WHERE id=?";
 //        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -77,7 +77,7 @@ public class UserDaoJDBCImpl implements UserDao {
 //        }
     }
 
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers() {
 //        Connection connection = Util.getConnection();
 //        List<User> userList = new ArrayList<>();
 //        String sql = "SELECT * FROM user";
