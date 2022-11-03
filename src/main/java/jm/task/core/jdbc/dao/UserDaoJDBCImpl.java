@@ -1,17 +1,17 @@
-//package jm.task.core.jdbc.dao;
-//
-//import jm.task.core.jdbc.model.User;
-//import jm.task.core.jdbc.util.Util;
-//
-//import java.sql.*;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class UserDaoJDBCImpl implements UserDao {
-//    public UserDaoJDBCImpl() {
-//    }
-//
-//    public void createUsersTable() throws SQLException {
+package jm.task.core.jdbc.dao;
+
+import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.util.Util;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserDaoJDBCImpl implements UserDao {
+    public UserDaoJDBCImpl() {
+    }
+
+    public void createUsersTable() throws SQLException {
 //        Connection connection = Util.getConnection();
 //        String sql = "CREATE TABLE IF NOT EXISTS `mydbtest`.`user` (\n" +
 //                "  `id` BIGINT NOT NULL AUTO_INCREMENT,\n" +
@@ -29,9 +29,9 @@
 //        if (connection != null) {
 //            connection.close();
 //        }
-//    }
-//
-//    public void dropUsersTable() throws SQLException {
+    }
+
+    public void dropUsersTable() throws SQLException {
 //        Connection connection = Util.getConnection();
 //        String sql = "drop table IF EXISTS user";
 //
@@ -44,9 +44,9 @@
 //        if (connection != null) {
 //            connection.close();
 //        }
-//    }
-//
-//    public void saveUser(String name, String lastName, byte age) throws SQLException {
+    }
+
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
 //        Connection connection = Util.getConnection();
 //        String sql = "INSERT INTO user (name, lastName, age) VALUES (?, ?, ?)";
 //        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -61,9 +61,9 @@
 //        if (connection != null) {
 //            connection.close();
 //        }
-//    }
-//
-//    public void removeUserById(long id) throws SQLException {
+    }
+
+    public void removeUserById(long id) throws SQLException {
 //        Connection connection = Util.getConnection();
 //        String sql = "DELETE FROM user WHERE id=?";
 //        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -75,9 +75,9 @@
 //        if (connection != null) {
 //            connection.close();
 //        }
-//    }
-//
-//    public List<User> getAllUsers() throws SQLException {
+    }
+
+    public List<User> getAllUsers() throws SQLException {
 //        Connection connection = Util.getConnection();
 //        List<User> userList = new ArrayList<>();
 //        String sql = "SELECT * FROM user";
@@ -99,9 +99,10 @@
 //            connection.close();
 //        }
 //        return userList;
-//    }
-//
-//    public void cleanUsersTable() {
+        return null;
+    }
+
+    public void cleanUsersTable() {
 //        Connection connection = Util.getConnection();
 //        String sql = "TRUNCATE TABLE user";
 //        try (Statement statement = connection.createStatement()){
@@ -109,5 +110,5 @@
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-//    }
-//}
+    }
+}
