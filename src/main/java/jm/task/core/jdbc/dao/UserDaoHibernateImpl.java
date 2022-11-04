@@ -5,8 +5,6 @@ import jm.task.core.jdbc.util.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     "    age      INT  null,\n" +
                     "    constraint users_pk\n" +
                     "        primary key (id)\n" + ");";
-            session.createSQLQuery(query).addEntity(User.class);
+            session.createSQLQuery(query).executeUpdate();
             transaction.commit();
             System.out.println("Table created");
         } catch (HibernateException e) {
@@ -43,7 +41,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (Session session = Util.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
             String sql = "DROP TABLE IF EXISTS users";
-            session.createSQLQuery(sql).addEntity(User.class);
+            session.createSQLQuery(sql).executeUpdate();
             transaction.commit();
             System.out.println("Table deleted");
         } catch (HibernateException e) {
